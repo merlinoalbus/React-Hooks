@@ -1,7 +1,5 @@
-import {
-  useState,
-  useEffect
-} from "react";
+/* eslint-disable jsx-a11y/no-redundant-roles */
+import { useState, useEffect } from "react";
 import data from "./data";
 import Articolo from "./Articolo";
 
@@ -9,12 +7,11 @@ import Articolo from "./Articolo";
 // returna il suo valore o di default return 'light-mode'
 const getCurrentTheme = () => {
   if (localStorage.getItem("theme")) {
-    return localStorage.getItem("theme")
+    return localStorage.getItem("theme");
   } else {
-    return "light"
+    return "light";
   }
-
-}
+};
 
 function App() {
   const [theme, setTheme] = useState(getCurrentTheme());
@@ -28,18 +25,22 @@ function App() {
     } else {
       setTheme("light");
     }
-  }
-  return ( <section className = "section-center">
-    <div className = "container">
-    <button className = "btn"
-    role = "button"
-    onClick = {
-      () => cambiaTema()
-    }> Cambia Tema </button> 
-    <section className = "article-section"> {
-      data.map((el) => ( <Articolo key = {el.id} {...el}/>
-      ))
-    } </section> </div> </section>
+  };
+  return (
+    <section className="section-center">
+      <div className="container">
+        <button className="btn" role="button" onClick={() => cambiaTema()}>
+          {" "}
+          Cambia Tema{" "}
+        </button>
+        <section className="article-section">
+          {" "}
+          {data.map((el) => (
+            <Articolo key={el.id} {...el} />
+          ))}{" "}
+        </section>{" "}
+      </div>{" "}
+    </section>
   );
 }
 
