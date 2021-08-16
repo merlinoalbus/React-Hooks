@@ -152,7 +152,7 @@ p {
   display: -webkit-flex;
   display: -ms-flex;
   flex-wrap: nowrap;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   position: relative;
   min-height: 400px;
   width: 100%;
@@ -165,7 +165,7 @@ p {
   transform: translate(0%, -50%);
   position: absolute;
   transition: var(--transition);
-  opacity: 0;
+  opacity: 1;
 }
 
 .review {
