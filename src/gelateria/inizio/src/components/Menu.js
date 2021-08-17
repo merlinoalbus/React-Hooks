@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from "react";
-import Gelato from "./Gelato";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import data from "../fakeData";
+import Gelato from "./Gelato";
 
 const url = "https://react-corso-api.netlify.app/.netlify/functions/gelateria";
 
 const Menu = () => {
+  const [prodotti, setProdotti] = useState(data);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [prodotti, setProdotti] = useState(data);
   const [selected, setSelected] = useState(0);
   const [filterProducts, setFilterProducts] = useState(prodotti);
   const [categorie, setCategorie] = useState([]);
-  //? console.log(prodotti);
+  
+  //? \
   //const categorie = Array.from(new Set(prodotti.map((el) => el.categoria)));
-  //? console.log("categorie:", categorie);
+  //? 
   //categorie.unshift("all");
   const filtraProdotti = (categoria, index) => {
     setSelected(index);
@@ -32,8 +33,8 @@ const Menu = () => {
       setIsError(false);
       try {
         const response = await axios.get(url);
-        console.log("response:", response);
-        console.log("url:", url);
+        
+        
         setProdotti(response.data.data.default);
         setFilterProducts(response.data.data.default)
         const nuoveCategorie =Array.from(
@@ -44,7 +45,7 @@ const Menu = () => {
         setIsLoading(false);
         setIsError(false);
       } catch (error) {
-        console.log("error:", error);
+        
         setIsLoading(false);
         setIsError(true);
       }
